@@ -22,7 +22,7 @@ steps:
   inputs:
     apkFiles: '**/*.apk'
     jarsign: true
-    jarsignerKeystoreFile: 'keys/test-deploy.jks'
+    jarsignerKeystoreFile: 'test-deploy.jks'
     jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
     jarsignerKeystoreAlias: 'test-deploy'
     jarsignerKeyPassword: '$(jarsignerKeyPassword)'
