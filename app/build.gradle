@@ -4,6 +4,16 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+    allprojects {
+        repositories {
+            jcenter()
+            maven {
+                url "https://maven.google.com"
+            }
+        }
+    }
+
+
     defaultConfig {
         applicationId "com.example.android.architecture.blueprints.todomvp"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -13,7 +23,14 @@ android {
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
-
+    signingConfigs {
+        release {
+            storeFile file("keys/test-deploy.jks")
+            storePassword System.properties['APP_KEYSTORE_PASSWORD']
+            keyAlias System.properties['APP_KEY_ALIAS']
+            keyPassword System.properties['APP_KEY_PASSWORD']
+        }
+    }
     buildTypes {
         debug {
             minifyEnabled true
@@ -28,6 +45,7 @@ android {
             useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
