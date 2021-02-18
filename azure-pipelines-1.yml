@@ -18,15 +18,15 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
-- task: AndroidSigning@2
+- task: AndroidSigning@3
   inputs:
     apkFiles: '**/*.apk'
-    jarsign: true
-    jarsignerKeystoreFile: 'test-deploy.jks'
-    jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
-    jarsignerKeystoreAlias: 'test-deploy'
-    jarsignerKeyPassword: '$(jarsignerKeyPassword)'
-    jarsignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/first-deploy-release.apk
+    apksign: true
+    apksignerKeystoreFile: 'test-deploy.jks'
+    apksignerKeystorePassword: '$(jarsignerKeystorePassword)'
+    apksignerKeystoreAlias: 'test-deploy'
+    apksignerKeyPassword: '$(jarsignerKeyPassword)'
+    apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/first-deploy-release.apk
     zipalign: true
 # Bash
 # Run a Bash script on macOS, Linux, or Windows
